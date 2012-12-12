@@ -11,6 +11,13 @@ function ITEM:OnHolster(ply)
 	ply:PS_RemoveClientsideModel(self.ID)
 end
 
+function ITEM:ModifyClientsideModel(ply, model, pos, ang)
+	pos = pos + (ang:Forward() * -5)
+	pos = pos + (ang:Up() * -2)
+	
+	return model, pos, ang
+end
+
 function ITEM:CanPlayerBuy(ply)
 	return os.date("%m") == "12" and true or false, 'It\'s not winter!'
 end
